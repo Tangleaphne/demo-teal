@@ -18,16 +18,19 @@ global ZeroAddress
 &&
 retsub
 
-// function A - txn amount must be 2 Algos or more
+// function A - txn amount must be X Algos or more, where X is a program argument
 function_a:
-callsub basic_checks
 txn Amount
-int 2000000
+arg 1
+btoi
+int 1000000
+*
 >=
+callsub basic_checks
 &&
 return
 
-// function B - txn receiver should be based on logic signature argument
+// function B - txn receiver should be of specific address
 function_b:
 callsub basic_checks
 addr WRBVLPUHQZ5O2UIZAKYKKMOUSNPOFIL6ALUZQZLHBDUSIKXHAEEIELWBFQ

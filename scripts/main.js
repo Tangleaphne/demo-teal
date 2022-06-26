@@ -44,12 +44,14 @@ const generateLogicSig = async (signer, args) => {
     let suggestedParams = await algodClient.getTransactionParams().do();
 
     // send txn calling function A
-    const txn1args = [Buffer.from("functionA")];
+    console.log("Calling function A...");
+    const minAlgos = 5;
+    const txn1args = [Buffer.from("functionA"), algosdk.encodeUint64(minAlgos)];
     const lsigA = await generateLogicSig(sender, txn1args);
     const txn1 = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
         from: lsigA.address(),
         to: acc1.addr,
-        amount: 2e6, // 1 Algo
+        amount: minAlgos * 1e6, // Provide min number of Algos
         suggestedParams,
     });
 
@@ -57,6 +59,7 @@ const generateLogicSig = async (signer, args) => {
     await submitToNetwork(signedTxn1.blob);
 
     // send txn calling function B
+    console.log("Calling function B...");
     const txn2args = [Buffer.from("functionB")];
     const lsigB = await generateLogicSig(sender, txn2args);
     const txn2 = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
