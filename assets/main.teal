@@ -1,0 +1,50 @@
+#pragma version 6
+
+// jump to main loop
+b main
+
+// basic checks using subroutine - adds 1 or 0 to the stack
+basic_checks:
+txn RekeyTo
+global ZeroAddress
+==
+txn CloseRemainderTo
+global ZeroAddress
+==
+&&
+txn AssetCloseTo
+global ZeroAddress
+==
+&&
+retsub
+
+// function A - txn amount must be 2 Algos or more
+function_a:
+callsub basic_checks
+txn Amount
+int 2000000
+>=
+&&
+return
+
+// function B - txn receiver should be based on logic signature argument
+function_b:
+callsub basic_checks
+addr WRBVLPUHQZ5O2UIZAKYKKMOUSNPOFIL6ALUZQZLHBDUSIKXHAEEIELWBFQ
+txn Receiver
+==
+&&
+return
+
+// main - calls function A or function B depending on the program args
+main:
+arg 0
+byte "functionA"
+==
+bnz function_a
+arg 0
+byte "functionB"
+==
+bnz function_b
+err
+
