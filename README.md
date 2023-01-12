@@ -12,13 +12,16 @@ Sample TEAL program which demostrates the following operations,
 
 ### Install packages
 ```
-npm install
+yarn install
 ```
 
 ### Update environement variables
 1. Copy `.env.example` to `.env`.
 2. Update Algorand Sandbox credentials in `.env` file.
 3. Run `source .env` in the project directory
+
+### Replace receiver address
+In the `main.teal`, replace receiver's address with the `acc2`'s address in the `.env` file.
 
 ### Run demo
 ```

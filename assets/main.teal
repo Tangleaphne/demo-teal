@@ -30,10 +30,10 @@ callsub basic_checks
 &&
 return
 
-// function B - txn receiver should be of specific address
+// function B - txn receiver should be of specific address, replace address with acc2's address
 function_b:
 callsub basic_checks
-addr WRBVLPUHQZ5O2UIZAKYKKMOUSNPOFIL6ALUZQZLHBDUSIKXHAEEIELWBFQ
+addr ZV4AZNH7EZK5XXL5KH6SF2BJW3GGXLSWJCUL2EGCIG3ITAIX2PEXQQLFCE
 txn Receiver
 ==
 &&
