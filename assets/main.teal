@@ -33,7 +33,7 @@ return
 // function B - txn receiver should be of specific address
 function_b:
 callsub basic_checks
-addr WRBVLPUHQZ5O2UIZAKYKKMOUSNPOFIL6ALUZQZLHBDUSIKXHAEEIELWBFQ
+addr XY2X3O3Y2MXOTJLZLP6ZOJFA4PG3CTKF3D57YTIW7IDN7NO5SPDGTBBRHQ
 txn Receiver
 ==
 &&
